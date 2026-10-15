@@ -1,18 +1,29 @@
-# In Silico Identification of Druggable Hub Proteins in Mycobacterium tuberculosis
+import csv
+import requests
+import networkx as nx
 
-This project identifies hub proteins among eight drug-resistance genes of M. tuberculosis (rpoB, katG, inhA, gyrA, gyrB, embB, pncA, rpsL) using a protein-protein interaction (PPI) network and molecular docking.
+genes = ["rpoB", "katG", "inhA", "gyrA", "gyrB", "embB", "pncA", "rpsL"]
 
-## Methods
-- PPI network: STRING database
-- Network analysis: Cytoscape v3.10.4, cytoHubba (degree centrality)
-- Docking: AutoDock Vina, SwissDock (PDB: 5UHC, chain C)
+# STRING database theke interaction anbe (83332 = M. tuberculosis H37Rv)
+url = "https://string-db.org/api/tsv/network"
+data = {"identifiers": "\r".join(genes), "species": 83332}
+response = requests.post(url, data=data)
 
-## Results
-- The network had 8 nodes and 28 edges.
-- RpoB emerged as the central hub.
-- Docking of aspirin (test ligand) at the RpoB site gave a best pose of -5.133 kcal/mol.
+rows = csv.DictReader(response.text.splitlines(), delimiter="\t")
+G = nx.Graph()
+for row in rows:
+    G.add_edge(row["preferredName_A"], row["preferredName_B"])
 
-## Files
-- ppi_hub_analysis.py : Python code for PPI network and hub ranking
-- results/ : network figure and docking outputs
-- poster : project poster
+print("Nodes:", G.number_of_nodes(), "Edges:", G.number_of_edges())
+
+# Degree centrality diye hub protein rank
+centrality = nx.degree_centrality(G)
+ranking = sorted(centrality.items(), key=lambda x: x[1], reverse=True)
+
+for gene, score in ranking:
+    print(gene, round(score, 3))
+
+with open("hub_ranking.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["gene", "degree_centrality"])
+    writer.writerows(ranking)
