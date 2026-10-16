@@ -94,4 +94,4 @@
 
 
 ## Docking Results
-![Docking Table](Screenshot_2026_1017_031512.jpg)
+![Docking Table](Screenshot_2026_1017_031616.png)
