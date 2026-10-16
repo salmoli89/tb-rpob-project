@@ -84,5 +84,4 @@
 - `ppi_hub_analysis.py` : Python code for PPI network and hub ranking
 - `results/` : network figure and docking outputs
 - poster image : project poster
-- ![Poster](poster.png)
-
+- ![Poster](IMG_20261017_023500.png)
