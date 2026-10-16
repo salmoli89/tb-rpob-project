@@ -85,3 +85,5 @@
 - `results/` : network figure and docking outputs
 - poster image : project poster
 - ![Poster](IMG_20261017_023500.png)
+- ## PPI Network
+![Cytoscape Network](IMG_20261017_030002.jpg)
