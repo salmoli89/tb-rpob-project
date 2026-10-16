@@ -95,3 +95,5 @@
 
 ## Docking Results
 ![Docking Table](Screenshot_2026_1017_031616.png)
+## Docking Files
+- [RpoB - clofazimine docking result (SwissDock)](rpoB_clofazimine.zip)
