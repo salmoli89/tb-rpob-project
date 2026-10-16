@@ -97,3 +97,5 @@
 ![Docking Table](Screenshot_2026_1017_031616.png)
 ## Docking Files
 - [RpoB - aspirin docking result (SwissDock)](rpoB_aspirin.zip)
+- ## Docking Files
+- [RpoB docking result (SwissDock)](rpoB_clofazimine.zip)
