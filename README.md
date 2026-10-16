@@ -87,3 +87,5 @@
 - ![Poster](IMG_20261017_023500.png)
 - ## PPI Network
 ![Cytoscape Network](IMG_20261017_030002.jpg)
+## Docking Results
+![Docking Table](FILENAME)
